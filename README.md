@@ -1,33 +1,8 @@
 # Henrik Sturcz — Portfolio
 
-Vite + React portfolio. Vercelre deploy-olható.
+My personal portfolio — a dark, interactive website built to reflect the two things I spend most of my time on: soft robotic exoskeleton design and frontend engineering. Two separate worlds, but the same obsession with how things work and how they look.
 
-## Indítás
+The site features a live WebGL background with custom GLSL shaders, a bento-grid capabilities section, scroll-driven transitions, and a terminal-stream contact section. Everything is built from scratch — no templates, no UI kits.
 
-```bash
-npm install
-npm run dev
-```
+**Built with** React, Three.js, Vite, CSS Modules and Vercel.
 
-## Build
-
-```bash
-npm run build
-```
-
-## Tartalom szerkesztése
-
-Minden szöveg, név, projekt, social link egy helyen:
-
-```
-src/data/site.js
-```
-
-## Deploy — Vercel
-
-1. GitHub-ra push
-2. Vercel-en import
-3. Framework: **Vite**
-4. Build: `npm run build` / Output: `dist`
-
-Biztonsági fejlécek (CSP, HSTS, XSS, X-Frame) és cache szabályok automatikusan betöltődnek a `vercel.json`-ból.
