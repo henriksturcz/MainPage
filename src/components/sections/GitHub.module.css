@@ -1,0 +1,88 @@
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.header { display: flex; flex-direction: column; gap: 16px; }
+.label { font-size: 0.65rem; letter-spacing: 6px; text-transform: uppercase; color: var(--red); font-weight: 600; }
+.heading { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem,4vw,3.5rem); font-weight: 700; line-height: 1.1; }
+.outline { color: transparent; -webkit-text-stroke: 1px var(--white); }
+
+.grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+
+.skeleton { height: 180px; border-radius: 20px; background: linear-gradient(90deg,rgba(255,255,255,0.03) 0%,rgba(255,255,255,0.06) 50%,rgba(255,255,255,0.03) 100%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+
+.error { color: var(--gray); text-align: center; padding: 60px; }
+.error a { color: var(--red); cursor: none; }
+
+.card {
+  position: relative;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  transition: all 0.45s cubic-bezier(0.25,0.8,0.25,1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: default;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 4px 30px rgba(0,0,0,0.3);
+}
+.cardGlow {
+  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(ellipse at var(--mx,50%) var(--my,50%), rgba(224,27,36,0.07), transparent 60%);
+  opacity: 0; transition: opacity 0.5s; pointer-events: none;
+}
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(224,27,36,0.6), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.card:hover::before { opacity: 1; }
+.card:hover .cardGlow { opacity: 1; }
+.card:hover {
+  border-color: rgba(224,27,36,0.25);
+  transform: translateY(-6px);
+  background: rgba(224,27,36,0.025);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 16px 50px rgba(224,27,36,0.08), 0 0 0 1px rgba(224,27,36,0.04);
+}
+
+.cardTop { display: flex; justify-content: space-between; align-items: center; }
+.num { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; color: rgba(224,27,36,0.5); font-weight: 600; letter-spacing: 2px; }
+.cardBtns { display: flex; gap: 8px; align-items: center; }
+.iconBtn {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  color: var(--gray); transition: all 0.25s; cursor: none;
+}
+.iconBtn:hover { background: rgba(224,27,36,0.12); border-color: rgba(224,27,36,0.3); color: var(--red); transform: translateY(-1px); }
+
+.cardBody { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.name { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--white); }
+.desc { font-size: 0.8rem; color: var(--gray); line-height: 1.65; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+.cardFoot { margin-top: 4px; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); background: rgba(224,27,36,0.08); border: 1px solid rgba(224,27,36,0.15); padding: 3px 8px; border-radius: 4px; }
+
+.viewAll { display: flex; justify-content: center; }
+.viewAllBtn {
+  display: inline-flex; align-items: center; gap: 12px; padding: 16px 40px;
+  background: rgba(224,27,36,0.08); border: 1px solid rgba(224,27,36,0.3);
+  color: var(--white); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 600; border-radius: 50px; backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.25,0.8,0.25,1); cursor: none;
+}
+.viewAllBtn:hover { border-color: var(--red); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(224,27,36,0.2); }
+
+@media (max-width: 1100px) { .grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 900px) { .section { padding: 100px 30px; } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }

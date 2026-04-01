@@ -1,0 +1,27 @@
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.15s ease, background 0.15s ease;
+  mix-blend-mode: difference;
+}
+.cursor.hover {
+  transform: scale(2.5);
+  background: rgba(224,27,36,0.15);
+}
+.dot {
+  width: 5px;
+  height: 5px;
+  background: var(--white);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10001;
+}
+@media (pointer: coarse) {
+  .cursor, .dot { display: none; }
+}
